@@ -1,6 +1,6 @@
 ## Change Workflow
 
-> _NOTE:_ Sign up for GitHub
+> _NOTE:_ Sign up for GitHub  
 > If you do not already have a GitHub account, [sign up](https://github.com/signup/free).
 
 ### Fork
