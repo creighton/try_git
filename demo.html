@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <!-- support scripts -->
+        <script type="text/javascript" src="./js/2.5.3-crypto-sha1.js"></script>
+        <script type="text/javascript" src="./js/base64.js"></script>
+
+        <!-- ADL scripts -->
+        <script type="text/javascript" src="./js/verbs.js"></script>
+        <script type="text/javascript" src="./js/xapiwrapper.js"></script>
+        
+        <!-- css -->
+        <link rel="stylesheet" type="text/css" href="./foundation-4.3.2.custom/css/foundation.css">
+    </head>
+    <body ng-app="xapidemoApp">
+        <h2><a href="https://github.com/adlnet/xAPIVerbs" target="_blank">ADL xAPI Verbs</a></h2>
+        <div ng-controller="ADLCtrl">
+            <input type="text" ng-model="search.display">
+            <table>
+                <tr>
+                    <th>Display</th>
+                    <th>ID</th>
+                </tr>
+                <tr ng-repeat="verb in verbs | filter:search">
+                    <td><strong>{{verb.display['en-US']}}</strong></td>
+                    <td>{{verb.id}}</td>
+                </tr>
+            </table>
+        </div>
+        <br>
+        <h2><a href="https://github.com/adlnet/xAPIWrapper" target="_blank">xAPI Wrapper</a></h2>
+        <div ng-controller="ADLCtrl">
+            <input type="text" ng-model="search.func">
+            <table>
+                <tr>
+                    <th>Function</th>
+                    <th>Readme Example</th>
+                </tr>
+                <tr ng-repeat="api in wrapperapi | filter:search">
+                    <td>{{api.func}}</td>
+                    <td><a href="{{api.readme}}" target="_blank">{{api.readme}}</a></td>
+                </tr>
+            </table>
+        </div>
+        <br>
+        <br>
+        <hr>
+        <h2><a href="https://github.com/adlnet/ADL_LRS" target="_blank">ADL LRS</a></h2>
+        <a href="https://lrs.adlnet.gov/XAPI/" target="_blank">Hosted LRS</a>
+        <br><br>
+        <a href="https://github.com/adlnet/xAPI-Spec/blob/master/xAPI.md#table-of-contents" target="_blank">xAPI Spec</a>
+        <script type="text/javascript" src="./angularjs/angular.js"></script>
+        <script type="text/javascript" src="./angularstuff.js"></script>
+    </body>
+</html>
