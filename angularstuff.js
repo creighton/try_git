@@ -1,10 +1,23 @@
+function clone(obj){
+    if(obj == null || typeof(obj) != 'object')
+        return obj;
+
+    var temp = new obj.constructor(); 
+    for(var key in obj)
+        temp[key] = clone(obj[key]);
+
+    return temp;
+}
+
 angular.module('xapidemoApp', ['ui.bootstrap'])
 
 .factory('ADLService', function () {
 	var verbs = [];
-	for (vidx in ADL.verbs) {
-		verbs.push(ADL.verbs[vidx]);
-	}
+	(function (x) {
+		var cpy = clone(x);
+		for (vidx in cpy) {
+			verbs.push(cpy[vidx]);
+		}})(ADL.verbs);
 	var wapi = [
 		{
 			"func":"sendStatement(statement, callback)",
