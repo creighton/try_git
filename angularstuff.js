@@ -1,4 +1,4 @@
-angular.module('xapidemoApp', [])
+angular.module('xapidemoApp', ['ui.bootstrap'])
 
 .factory('ADLService', function () {
 	var verbs = [];

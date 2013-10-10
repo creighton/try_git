@@ -1,4 +1,5 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
     <head>
         <!-- support scripts -->
         <script type="text/javascript" src="./js/2.5.3-crypto-sha1.js"></script>
@@ -9,48 +10,84 @@
         <script type="text/javascript" src="./js/xapiwrapper.js"></script>
         
         <!-- css -->
-        <link rel="stylesheet" type="text/css" href="./foundation-4.3.2.custom/css/foundation.css">
+        <!-- <link rel="stylesheet" type="text/css" href="./foundation-4.3.2.custom/css/foundation.css"> -->
+        <!-- <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"> -->
+        <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
+        <style type="text/css">
+            .nav, .pagination, .carousel a { cursor: pointer; }
+        </style>
     </head>
     <body ng-app="xapidemoApp">
-        <div class="row">
-            <h2><a href="https://github.com/adlnet/xAPIVerbs" target="_blank">ADL xAPI Verbs</a></h2>
-            <div ng-controller="ADLCtrl">
-                <input type="text" ng-model="search.display">
-                <table>
-                    <tr>
-                        <th>Display</th>
-                        <th>ID</th>
-                    </tr>
-                    <tr ng-repeat="verb in verbs | filter:search">
-                        <td><strong>{{verb.display['en-US']}}</strong></td>
-                        <td>{{verb.id}}</td>
-                    </tr>
-                </table>
+        <div class="hero-unit">
+            <div class="container">
+                <h1>Experience API</h1>
+                <p class="lead">The Experience <abbr title="Application Programming Interface" class="initialism">API</abbr> is a service that allows for statements of experience to be delivered to and stored securely in a Learning Record Store (LRS).</p>
+                <p>
+                    <a class="btn btn-primary btn-lg" href="https://github.com/adlnet/xAPI-Spec/blob/master/xAPI.md" target="_blank">Spec on GitHub ></a>
+                </p>
             </div>
-            <br>
-            <h2><a href="https://github.com/adlnet/xAPIWrapper" target="_blank">xAPI Wrapper</a></h2>
-            <div ng-controller="ADLCtrl">
-                <input type="text" ng-model="search.func">
-                <table>
-                    <tr>
-                        <th>Function</th>
-                        <th>Readme Example</th>
-                    </tr>
-                    <tr ng-repeat="api in wrapperapi | filter:search">
-                        <td>{{api.func}}</td>
-                        <td><a href="{{api.readme}}" target="_blank">{{api.readme}}</a></td>
-                    </tr>
-                </table>
-            </div>
-            <br>
-            <br>
-            <hr>
-            <h2><a href="https://github.com/adlnet/ADL_LRS" target="_blank">ADL LRS</a></h2>
-            <a href="https://lrs.adlnet.gov/XAPI/" target="_blank">Hosted LRS</a>
-            <br><br>
-            <h2><a href="https://github.com/adlnet/xAPI-Spec/blob/master/xAPI.md#table-of-contents" target="_blank">xAPI Spec</a></h2>
+        </div>
+        <div class="container">
+            <accordion close-others="true">
+                <accordion-group heading="ADL LRS">
+                    <div class="container">
+                        <h2>ADL LRS</h2>
+                        <p class="lead">The ADL Learning Record Store is an example implementation 
+                            of the Learning Record Store defined in the Experience API Specification. This system is a Django web app that is designed to be installed on an Ubuntu server. All of the source is openly licensed under the Apache 2.0 License and freely available on GitHub.</p>
+                        <a href="https://github.com/adlnet/ADL_LRS" class="btn btn-primary btn-lg" target="_blank">LRS on GitHub ></a>
+                            <br><br>
+                        <p>There is also a hosted ADL LRS based on the GitHub project. This is a complete working instance of that project and allows for users to sign up and use the LRS. <span class="text-warning">The data in the system is not permanent. Since this is only for demonstration purposes and testing, the LRS will be updated and data wiped periodically.</span></p>
+                        <a href="https://lrs.adlnet.gov/XAPI/" class="btn btn-primary btn-lg" target="_blank">Hosted LRS ></a>
+                    </div>
+                </accordion-group>
+                
+                <accordion-group heading="ADL xAPI Wrapper">
+                    <p>
+                        The ADL xAPI Wrapper is a JavaScript file that simplifies connecting and communicating with an LRS. See configuration and usage examples on the xAPI Wrapper GitHub project page.
+                    </p>
+                    <div ng-controller="ADLCtrl">
+                        <input id="fnsearch" type="text" ng-model="search.func" placeholder="filter.." alt="Filter by function">
+                        <a class="btn btn-primary btn-lg pull-right"  href="https://github.com/adlnet/xAPIWrapper" target="_blank">xAPI Wrapper on Github ></a>
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Function</th>
+                                    <th>Readme Example</th>
+                                </tr>
+                            </thead>
+                            <tr ng-repeat="api in wrapperapi | filter:search">
+                                <td><code>{{api.func}}</code></td>
+                                <td><a href="{{api.readme}}" target="_blank">{{api.readme}}</a></td>
+                            </tr>
+                        </table>
+                    </div>
+                </accordion-group>
+
+                <accordion-group heading="ADL Verbs">
+                    <p>
+                        The ADL Verbs JavaScript file contains the list of ADL Verbs to simplify using the verbs in content. See configuration and usage examples on the ADL Verbs GitHub project page.
+                    </p>
+                    <div ng-controller="ADLCtrl">
+                        <input id="verbsearch" type="text" ng-model="search.display" placeholder="filter.." alt="Filter by display">
+                        <a class="btn btn-primary btn-lg pull-right"  href="https://github.com/adlnet/xAPIVerbs" target="_blank">ADL xAPI Verbs on Github ></a>
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Display</th>
+                                    <th>ID</th>
+                                </tr>
+                            </thead>
+                            <tr ng-repeat="verb in verbs | filter:search">
+                                <td><strong>{{verb.display['en-US']}}</strong></td>
+                                <td>{{verb.id}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </accordion-group>
+            </accordion>
         </div>
         <script type="text/javascript" src="./angularjs/angular.js"></script>
+        <script type="text/javascript" src="./angularjs/ui-bootstrap-tpls-0.6.0.min.js"></script>
         <script type="text/javascript" src="./angularstuff.js"></script>
     </body>
 </html>
