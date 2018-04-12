@@ -17,7 +17,7 @@
 | Property | Type   | Description     | Required |
 | :------: | :--:   | :----------:    |  :--:    |
 | ants    | \[[Ant](#ant)\]     |  An Array of Ant types | yes |
-| color    | String | 
+
 
 ## Requests
 ### GET
